@@ -1,0 +1,61 @@
+<div class="title-row">
+  <h3 mat-subheader>Power Search</h3>
+  <div class="actions">
+    <button mat-button matTooltip="Remember search">
+      <mat-icon>bookmark_border</mat-icon>
+    </button>
+    <span class="vertical-line"></span>
+    <button
+      mat-button
+      matTooltip="One item per page"
+      (click)="onePerPage = true"
+    >
+      <mat-icon>image</mat-icon>
+    </button>
+    <button
+      mat-button
+      matTooltip="Multiple items per page"
+      (click)="onePerPage = false"
+    >
+      <mat-icon>format_list_bulleted</mat-icon>
+    </button>
+    <span class="vertical-line"></span>
+    <button mat-button matTooltip="Sort By" [matMenuTriggerFor]="sortMenu">
+      <mat-icon>sort_by_alpha</mat-icon>
+    </button>
+    <mat-menu #sortMenu>
+      <mat-option *ngFor="let item of sortOptions">
+        {{ item }}
+      </mat-option>
+    </mat-menu>
+  </div>
+</div>
+<ng-container *ngIf="onePerPage; else multiple">
+  <!-- <bdl-search-page [lot]="lotList[0]"></bdl-search-page> -->
+</ng-container>
+<ng-template #multiple>
+  <ng-container *ngFor="let lot of lotList">
+    <div class="search-item">
+      <img [src]="lot.imageUrl" [alt]="lot.title" />
+      <div class="properties">
+        <h4>
+          {{ lot.title }}
+          <button mat-button matTooltip="more details...">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </h4>
+        <p class="description">{{ lot.description }}</p>
+        <p>
+          <strong>Estimate: </strong>
+          {{ lot.estimate }}
+        </p>
+        <p>
+          <strong>Grade: </strong>
+          {{ lot.grade }}
+        </p>
+      </div>
+    </div>
+    
+  </ng-container>
+</ng-template>
+<mat-paginator [length]="lotList.length"></mat-paginator>
