@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Avatar, AVATARS  } from "./avatar-list.mock";
 
 @Component({
-  selector: "bdl-avatar-list",
+  selector: "shw-avatar-list",
   templateUrl: "./avatar-list.component.html",
   styleUrls: ["./avatar-list.component.scss"],
 })

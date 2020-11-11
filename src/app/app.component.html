@@ -1,8 +1,9 @@
 <mat-tab-group>
-	<mat-tab label="test">
-		content!
+	<mat-tab
+	  [label]="tabConfig.title"
+	  *ngFor="let tabConfig of tabService.tabList | async"
+	>
+	  <shw-tab-content [tabConfig]="tabConfig"></shw-tab-content>
 	</mat-tab>
-	<mat-tab label="test 2">
-		content!
-	</mat-tab>
-</mat-tab-group>
+  </mat-tab-group>
+  
