@@ -1,3 +1,3 @@
-# angular-ivy-tjybfb
+# angular-dynamic-tabs
 
-[View on StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-tjybfb)
+[View on StackBlitz ⚡️](https://stackblitz.com/edit/angular-dynamic-tabs-jybfb)
