@@ -8,4 +8,8 @@ import { TabService } from "./tabs/tab.service";
 })
 export class AppComponent {
   constructor(public tabService: TabService) {}
+
+  onCloseTab(tabIndex: number) {
+    this.tabService.closeTab(tabIndex);
+  }
 }

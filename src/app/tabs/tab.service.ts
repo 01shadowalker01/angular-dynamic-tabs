@@ -7,11 +7,17 @@ import { TABS } from "./tabs.config";
   providedIn: "root",
 })
 export class TabService {
-  private tabs$ = new BehaviorSubject<Tab[]>(TABS);
+  private _tabList: Tab[] = TABS;
+  private tabs$ = new BehaviorSubject<Tab[]>(this._tabList);
 
   constructor() {}
 
   public get tabList(): Observable<Tab[]> {
     return this.tabs$.asObservable();
+  }
+
+  closeTab(tabIndex: number) {
+    delete this._tabList[tabIndex];
+    this.tabs$.next(this._tabList);
   }
 }

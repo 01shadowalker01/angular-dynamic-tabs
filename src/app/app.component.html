@@ -1,9 +1,19 @@
-<mat-tab-group>
-	<mat-tab
-	  [label]="tabConfig.title"
-	  *ngFor="let tabConfig of tabService.tabList | async"
-	>
-	  <shw-tab-content [tabConfig]="tabConfig"></shw-tab-content>
-	</mat-tab>
-  </mat-tab-group>
-  
+<mat-tab-group dynamicHeight>
+  <ng-container
+    *ngFor="let tabConfig of tabService.tabList | async; let i = index"
+  >
+    <mat-tab *ngIf="tabConfig" [label]="tabConfig.title">
+      <ng-template mat-tab-label>
+        {{ tabConfig.title }}
+        <button
+          *ngIf="tabConfig.closable"
+          mat-icon-button
+          (click)="onCloseTab(i)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </ng-template>
+      <shw-tab-content [tabConfig]="tabConfig"></shw-tab-content>
+    </mat-tab>
+  </ng-container>
+</mat-tab-group>

@@ -5,8 +5,8 @@ import {
   OnInit,
   ViewChild,
 } from "@angular/core";
-import { TabContentHostDirective } from "./tab-content-host.directive";
 import { Tab } from "./tab";
+import { TabContentHostDirective } from "./tab-content-host.directive";
 
 @Component({
   selector: "shw-tab-content",
@@ -21,7 +21,7 @@ export class TabContentComponent implements OnInit {
   constructor(private componentFactory: ComponentFactoryResolver) {}
 
   ngOnInit() {
-    this.loadComponent();
+    if (this.tabConfig) this.loadComponent();
   }
 
   loadComponent() {
